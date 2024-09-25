@@ -19,6 +19,7 @@ Projeto apenas para fins de estudo, sem aplicação prática planejada
 Ferramentas utilizadas e bibliotecas
 
 IDE Eclipse
+
 Biblioteca Java - LocalDate
 
 ## 📌 Versão
