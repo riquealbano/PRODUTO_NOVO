@@ -1,0 +1,62 @@
+import java.time.LocalDate; // Biblioteca que permite utilizar datas (aaaa/mm/dd)
+
+public class Produto_Novo {
+	    
+		// Atributos da Classe
+	    String nome;
+	    double precoDeCompra;
+	    double precoDeVenda;
+	    LocalDate dataFabricacao; // Guardando "dataFabricacao" como uma data
+	    LocalDate dataValidade; // Guardando "dataValidade" como uma data
+
+	    // Construtor que recebe todos os atributos
+	    public Produto_Novo(String nome, double precoDeCompra, double precoDeVenda, LocalDate dataFabricacao, LocalDate dataValidade) {
+	    	this.nome = nome;
+	        this.precoDeVenda = precoDeVenda;
+	        this.precoDeCompra = precoDeCompra;
+	        this.dataFabricacao = dataFabricacao;
+	        this.dataValidade = dataValidade;
+		}
+	    
+	    // Construtor que identifica uma data de validade 1 mês após a data de fabricação
+	    public Produto_Novo(String nome, double precoDeCompra, double precoDeVenda, LocalDate dataFabricacao) {
+	        this.nome = nome;
+	        this.precoDeCompra = precoDeCompra;
+	        this.precoDeVenda = precoDeVenda;
+	        this.dataFabricacao = dataFabricacao;
+	        this.dataValidade = dataFabricacao.plusMonths(1); // Validade como 1 mês apòs fabricação
+	    }
+	    
+	    // Construtor completo, recebe apenas 2 atributos e define os outros conforme solicitado
+	    public Produto_Novo(String nome, double precoDeCompra) {
+	        this.nome = nome;
+	        this.precoDeCompra = precoDeCompra;
+	        this.precoDeVenda = precoDeCompra * 1.10; // Preço de venda 10% a mais sobre o custo
+	        this.dataFabricacao = LocalDate.now(); // Data de fabricação como a data atual
+	        this.dataValidade = dataFabricacao.plusMonths(1); // Validade como 1 mês após fabricação
+	    }
+	    
+	    // Organização de saída de informações para o console
+	    public String toString() {
+	        return "Produto: " + nome + "\n" +
+	               "Preço de Compra: " + precoDeCompra + "\n" +
+	               "Preço de Venda: " + precoDeVenda + "\n" +
+	               "Data de Fabricação: " + dataFabricacao + "\n" +
+	               "Data de Validade: " + dataValidade;
+	    }
+
+	    public static void main(String[] args) {
+	        
+	    	// Produto do método 1, chama todos os atributos
+	        Produto_Novo p1 = new Produto_Novo("Biscoito",1.00,1.99,LocalDate.of(2024, 9, 24),LocalDate.of(2024, 9, 30));
+	        System.out.println(p1);
+	        
+	        // Produto do método 2, define a data de validade 1 mês após a data de fabricação
+	        Produto_Novo p2 = new Produto_Novo("Doritos", 3.99, 7.99, LocalDate.of(2024, 9, 24));
+	        System.out.println("\n" + p2);
+	        
+	        // Produto do método 3, define preço de venda, data de fabricação e data de validade automaticamente
+	        Produto_Novo p3 = new Produto_Novo("Refrigerante", 5.00);
+	        System.out.println("\n" + p3);
+	    }
+	}
